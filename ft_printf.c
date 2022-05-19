@@ -6,7 +6,7 @@
 /*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:00:56 by adouay            #+#    #+#             */
-/*   Updated: 2022/05/18 21:03:03 by adouay           ###   ########.fr       */
+/*   Updated: 2022/05/18 23:25:01 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printchar(int n)
 {
-	char c;
+	char	c;
 
 	c = n;
 	write(1, &c, 1);
@@ -23,7 +23,7 @@ int	ft_printchar(int n)
 
 int	ft_print_string(char *str)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	if (!str)
@@ -39,7 +39,7 @@ int	ft_print_string(char *str)
 
 int	ft_format(va_list arg, char c)
 {
-	int counter;
+	int	counter;
 
 	counter = 0;
 	if (c == 'c')
@@ -47,7 +47,7 @@ int	ft_format(va_list arg, char c)
 	if (c == 's')
 		counter = ft_print_string((char *)va_arg(arg, char *));
 	if (c == 'p')
-		counter = ft_print_pointer((unsigned long long int)va_arg(arg, unsigned long long int));
+		counter = ft_print_pointer(va_arg(arg, unsigned long long int));
 	if (c == 'd' || c == 'i')
 		counter = ft_int((int)va_arg(arg, int));
 	if (c == 'u')
@@ -59,9 +59,9 @@ int	ft_format(va_list arg, char c)
 	return (counter);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	int	counter;
+	int		counter;
 	va_list	arg;
 
 	va_start(arg, format);
